@@ -5,6 +5,7 @@ namespace gruppuppgift
     {
         public static void Main(string[] args)
         {
+            Random tal = new Random();
             string senasteVinnaren = "";
             string menyVal = "0";
             while (menyVal != "4")
@@ -22,24 +23,23 @@ namespace gruppuppgift
                     case "1": // Användaren spelar spelet
                         Console.Write("Gissa ett tal mellan 1-10: ");
                         int num = int.Parse(Console.ReadLine());
+                        int minVärde = 1;
+                        int maxVärde = 10;
+                        int rättTal = tal.Next(minVärde, maxVärde);
 
-                        if (num == 4) // Användaren gissar rätt
+                        if (num == rättTal) // Användaren gissar rätt
                         {
                             Console.WriteLine("Du gissade rätt!");
                             Console.WriteLine("Skriv in ditt namn: ");
                             senasteVinnaren = Console.ReadLine();
                             break;
                         }
-                        else if (num < 4) // Användaren gissar för lågt
+                        else
                         {
-                            Console.WriteLine("Du gissade tyvärr för lågt, testa igen!");
-                            break;
+                            Console.WriteLine("Tyvärr, du gissade fel!");
                         }
-                        else if (num > 4) // Användaren gissar för högt
-                        {
-                            Console.WriteLine("Du gissade tyvärr för högt, testa igen!");
-                            break;
-                        }
+                        break;
+                       
 
                     case "2":
                         Console.WriteLine($"Den senaste vinnaren är: {senasteVinnaren}");

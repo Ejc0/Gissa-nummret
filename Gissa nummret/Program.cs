@@ -27,19 +27,37 @@ namespace gruppuppgift
                         int maxVärde = 10;
                         int rättTal = tal.Next(minVärde, maxVärde);
 
-                        if (num == rättTal) // Användaren gissar rätt
+                        while (num == rättTal) // Användaren gissar rätt
                         {
                             Console.WriteLine("Du gissade rätt!");
                             Console.WriteLine("Skriv in ditt namn: ");
                             senasteVinnaren = Console.ReadLine();
                             break;
                         }
-                        else
+                        while (num != rättTal) // Användaren gissar fel
                         {
-                            Console.WriteLine("Tyvärr, du gissade fel!");
+         
+                            //Console.WriteLine("Gissa ett tal mellan 1-10");
+                            num = int.Parse(Console.ReadLine());
+
+                            if (num == rättTal)
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Grattis! Du gissade rätt!");
+                                Console.WriteLine("Skriv ditt namn: ");
+                                senasteVinnaren = Console.ReadLine();
+                            }
+
+                            else if (num < rättTal)
+                            {
+                                Console.WriteLine("du gissade för lågt");
+                            }
+                            else if (num > rättTal) {
+                                Console.WriteLine("du gissade för högt");
+                            }
                         }
                         break;
-                       
+
 
                     case "2":
                         Console.WriteLine($"Den senaste vinnaren är: {senasteVinnaren}");

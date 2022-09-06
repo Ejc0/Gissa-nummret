@@ -26,27 +26,51 @@ namespace gruppuppgift
                         int minVärde = 1;
                         int maxVärde = 10;
                         int rättTal = tal.Next(minVärde, maxVärde);
-
+                        
                         while (num == rättTal) // Användaren gissar rätt
                         {
-                            Console.WriteLine("Du gissade rätt!");
-                            Console.WriteLine("Skriv in ditt namn: ");
-                            senasteVinnaren = Console.ReadLine();
-                            break;
+                        Console.WriteLine("Du gissade rätt!");
+                        Console.Write("Skriv in ditt namn: ");
+                        senasteVinnaren = Console.ReadLine();
+                        break;
                         }
+                        
                         while (num != rättTal) // Användaren gissar fel
                         {
                             Console.WriteLine("Tyvärr, du gissade fel! Försök igen!");
                             Console.WriteLine("Gissa ett tal mellan 1-10");
                             num = int.Parse(Console.ReadLine());
                             
-                            if (num == rättTal)
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Grattis! Du gissade rätt!");
-                                Console.WriteLine("Skriv ditt namn: ");
-                                senasteVinnaren = Console.ReadLine();
-                            }
+                           while (num < rättTal)
+                           {
+                               Console.WriteLine("Du gissade för lågt, försök igen!");
+                               Console.Write("Gissa ett tal mellan 1-10: ");
+                               num = int.Parse(Console.ReadLine());
+                               if (num == rättTal)
+                               {
+                                   Console.Clear();
+                                   Console.WriteLine("Grattis! Du gissade rätt!");
+                                   Console.Write("Skriv in ditt namn: ");
+                                   senasteVinnaren = Console.ReadLine();
+                                   break;
+                               }
+                           }
+                    while (num > rättTal)
+                    {
+                        Console.WriteLine("Du gissade för högt, försök igen!");
+                        Console.Write("Gissa ett tal mellan 1-10: ");
+                        num = int.Parse(Console.ReadLine());
+
+                        if (num == rättTal)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Grattis! Du gissade rätt!");
+                            Console.Write("Skriv in ditt namn: ");
+                            senasteVinnaren = Console.ReadLine();
+                            break;
+                        }
+                    }
+                    break;
                         }
                         break;
                        
